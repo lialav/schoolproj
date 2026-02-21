@@ -731,6 +731,19 @@
         }
     });
 </script>
+<div id="welcome-message"></div>
+
+<script>
+    // 1. Get the 'name' parameter from the URL (e.g., ?name=Guest)
+    const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('name');
+
+    if (userName) {
+        // VULNERABLE LINE: This injects whatever is in the URL directly into the page
+        document.getElementById('welcome-message').innerHTML = "Welcome, " + userName;
+    }
+</script>
 </body>
 </html>
+
 
